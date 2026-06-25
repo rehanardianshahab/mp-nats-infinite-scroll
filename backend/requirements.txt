@@ -1,0 +1,5 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+nats-py==2.9.0
+sse-starlette==2.2.1
+requests==2.32.3
