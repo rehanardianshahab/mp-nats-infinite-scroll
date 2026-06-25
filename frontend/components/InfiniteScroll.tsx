@@ -17,7 +17,6 @@ export default function InfiniteScroll({
   children,
 }: Props) {
   const scrollRef = useRef<HTMLDivElement | null>(null);
-  const prevLoading = useRef(loading);
 
   const handleScroll = useCallback(() => {
     const el = scrollRef.current;
@@ -28,17 +27,14 @@ export default function InfiniteScroll({
     }
   }, [loadMore, loading, hasMore]);
 
-  /* auto-load when content is shorter than container */
+  /* auto-load when content fits without scrollbar & more data exists */
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || loading || !hasMore) return;
-    if (prevLoading.current && !loading) {
-      if (el.scrollHeight <= el.clientHeight + 10) {
-        loadMore();
-      }
+    if (el.scrollHeight <= el.clientHeight + 10) {
+      loadMore();
     }
-    prevLoading.current = loading;
-  }, [loading, hasMore, loadMore]);
+  }, [hasMore, loading, loadMore, children]);
 
   return (
     <div

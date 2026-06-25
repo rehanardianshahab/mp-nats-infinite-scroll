@@ -11,13 +11,3 @@ export function relativeTime(iso: string): string {
   const weeks = Math.floor(days / 7);
   return `${weeks} minggu lalu`;
 }
-
-export interface NotificationItem {
-  id: number;
-  user_email: string;
-  sender_name: string;
-  type: string;
-  message: string;
-  is_read: boolean;
-  created_at: string;
-}

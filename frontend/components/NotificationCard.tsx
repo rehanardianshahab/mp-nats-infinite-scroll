@@ -1,7 +1,8 @@
 "use client";
 
 import { Mail, MailOpen, Clock } from "lucide-react";
-import { NotificationItem, relativeTime } from "@/lib/utils";
+import type { NotificationItem } from "@/lib/type";
+import { relativeTime } from "@/lib/utils";
 
 interface Props {
   notif: NotificationItem;
