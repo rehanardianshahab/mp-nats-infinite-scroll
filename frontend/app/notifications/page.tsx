@@ -64,9 +64,7 @@ export default function NotificationsPage() {
   /* ── SSE stream ── */
   useEffect(() => {
     mountedRef.current = true;
-    const url = `${
-      process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"
-    }/api/notifications/stream?user_email=${encodeURIComponent(userEmail)}`;
+    const url = `/api/notifications/stream?user_email=${encodeURIComponent(userEmail)}`;
     const es = new EventSource(url);
 
     es.addEventListener("notification", (event) => {
